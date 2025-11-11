@@ -16,7 +16,7 @@ const Assistir = () => {
 
             <div className="aspect-video w-full bg-black rounded-lg overflow-hidden shadow-glow">
               <iframe
-                src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID"
+                src="https://playerv.srvstm.com/video/radioenergia4369//true/false/V1hwT1UyUkhVbkZTV0ZacVRUQnZlVmw2VGxOa1JYaDBWRzVhYVZWVU1Eaz0rUg==/16:9/YUhSMGNITTZMeTl5WVdScGJ6ZzRabTB1WTI5dEwzZGhiR3h3WVhCbGNuTXZkMkZzYkhCaGNHVnlYemc0WDI1dmRtRXVhbkJuK0Q=/nao/nao"
                 title="Rádio 88 FM - Transmissão Ao Vivo"
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
