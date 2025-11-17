@@ -1,24 +1,41 @@
 import { Link, useLocation } from "react-router-dom";
 import { Youtube, Linkedin, Instagram, Facebook } from "lucide-react";
-import logoHeader from "@/assets/logoHeader.png";
+import logoHeaderWhite from "@/assets/logoheadsvg.svg";
+import logoHeaderColor from "@/assets/logoheadsvgcolor.svg";
+import { useState } from "react";
+
 const Header = () => {
   const location = useLocation();
+  const [isHovered, setIsHovered] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-6 py-6">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-all">
+      <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <img src={logoHeader} className="w-12 h-13"></img>
+          {/* LOGO */}
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <img
+              src={isHovered ? logoHeaderColor : logoHeaderWhite}
+              alt="Logo Rádio 88 FM"
+              className="w-14 h-auto transition-transform duration-500 ease-out hover:scale-110"
+            />
           </Link>
 
+          {/* NAVIGATION */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
               to="/"
               className={`text-lg font-semibold transition-colors ${
-                isActive("/") ? "text-primary" : "text-foreground hover:text-primary"
+                isActive("/")
+                  ? "text-primary"
+                  : "text-foreground hover:text-primary"
               }`}
             >
               Home
@@ -26,13 +43,16 @@ const Header = () => {
             <Link
               to="/ouvir"
               className={`text-lg font-semibold transition-colors ${
-                isActive("/ouvir") ? "text-primary" : "text-foreground hover:text-primary"
+                isActive("/ouvir")
+                  ? "text-primary"
+                  : "text-foreground hover:text-primary"
               }`}
             >
-              Ouvir Ao vivo
+              Ouvir Ao Vivo
             </Link>
           </nav>
 
+          {/* SOCIAL ICONS */}
           <div className="flex items-center gap-4">
             <a
               href="https://www.youtube.com/@radio88oficial"

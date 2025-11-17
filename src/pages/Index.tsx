@@ -124,7 +124,7 @@ const Index = () => {
         { name: "Cíntia Miranda", color: "bg-yellow-400", image: cintia },
         { name: "Betinho Albertassi", color: "bg-blue-500", image: betin },
         { name: "Dário Ferreira", color: "bg-green-500", image: dario },
-        { name: "Fato", color: "bg-purple-600", image: fato },
+        { name: "Leandro Batista", color: "bg-purple-600", image: fato },
         { name: "Geraldo Albertassi", color: "bg-red-500", image: geraldo },
         { name: "Johnathan Amado", color: "bg-cyan-400", image: johna },
         { name: "Léo Salles", color: "bg-yellow-400", image: leo },
@@ -148,7 +148,6 @@ const Index = () => {
             className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
           />
 
-          {/* Nome flutuante */}
           <div
             className="
               absolute bottom-4 left-1/2 -translate-x-1/2

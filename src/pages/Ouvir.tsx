@@ -5,21 +5,21 @@ import { Card } from "@/components/ui/card";
 import { Play, Pause, Volume2 } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { radioService, getRadioInfo } from "@/lib/radioService";
+import logoMusica from "@/assets/logoMusica.svg"; 
 
 const Ouvir = () => {
   const [isPlaying, setIsPlaying] = useState(radioService.getPlayingState());
   const [volume, setVolume] = useState([70]);
   const [musica, setMusica] = useState("Rádio 88 FM");
   const [artista, setArtista] = useState("");
-  const [capa, setCapa] = useState<string>("");
+  const [capa, setCapa] = useState<string>(logoMusica);
+  const [isRadio, setIsRadio] = useState(true);
 
+  // Controle do play/pause global
   useEffect(() => {
     const unsubscribe = radioService.subscribe((playing) => setIsPlaying(playing));
-
     return () => {
-      if (typeof unsubscribe === "function") {
-        unsubscribe();
-      }
+      if (typeof unsubscribe === "function") unsubscribe();
     };
   }, []);
 
@@ -36,25 +36,37 @@ const Ouvir = () => {
     const fetchData = async () => {
       try {
         const data = await getRadioInfo();
-
         if (!data) return;
 
-        if (
-          data.musica_atual.includes("Radio 88") ||
-          data.musica_atual.includes("88 FM")
-        ) {
+        const nomeMusica = data.musica_atual?.trim() || "";
+        const nomeLower = nomeMusica.toLowerCase();
+
+        const invalido =
+          nomeLower === "-" ||
+          nomeLower === "," ||
+          nomeLower === "/" ||
+          nomeLower.includes("radio fm 88") ||
+          nomeLower.includes("rádio 88") ||
+          nomeLower.includes("88.7") ||
+          nomeLower.includes("88,7") ||
+          nomeLower.includes("volta redonda");
+
+        if (invalido) {
           setMusica("Rádio 88 FM");
-          setArtista("");
-          setCapa("");
-        } else if (data.musica_atual.includes(" - ")) {
-          const [titulo, artistaNome] = data.musica_atual.split(" - ");
-          setMusica(titulo.trim());
-          setArtista(artistaNome.trim());
-          setCapa(data.capa_musica || "");
+          setArtista("O Som do Céu");
+          setCapa(logoMusica); 
+          setIsRadio(true);
         } else {
-          setMusica(data.musica_atual);
-          setArtista("");
-          setCapa(data.capa_musica || "");
+          const [titulo, artistaNome] = nomeMusica.split(" - ");
+          setMusica(titulo?.trim() || nomeMusica);
+          setArtista(artistaNome?.trim() || "");
+          setCapa(
+            !data.capa_musica ||
+              data.capa_musica.includes("img-capa-artista-padrao.png")
+              ? logoMusica
+              : data.capa_musica
+          );
+          setIsRadio(false);
         }
       } catch (err) {
         console.error("Erro ao buscar dados da rádio:", err);
@@ -78,36 +90,40 @@ const Ouvir = () => {
             </h1>
 
             <div className="space-y-8">
+              {/* CAPA */}
               <div className="flex justify-center">
-                {capa ? (
-                  <img
-                    src={capa}
-                    alt={musica}
-                    className="w-64 h-64 rounded-2xl shadow-glow object-cover"
-                  />
-                ) : (
-                  <div className="w-64 h-64 rounded-2xl shadow-glow bg-card border border-border flex items-center justify-center">
-                    <div className="w-32 h-32 bg-foreground rounded-lg flex items-center justify-center">
-                      <span className="text-background text-5xl font-bold">88</span>
-                    </div>
-                  </div>
+                <img
+                  src={capa}
+                  alt={musica}
+                  className={`w-64 h-64 rounded-2xl shadow-glow object-cover ${
+                    isRadio ? "p-6 bg-background" : ""
+                  }`}
+                />
+              </div>
+
+              {/* TÍTULO E ARTISTA */}
+              <div className="text-center space-y-2">
+                <h2 className="text-2xl font-bold text-foreground">{musica}</h2>
+                {artista && (
+                  <p className="text-lg text-muted-foreground">{artista}</p>
                 )}
               </div>
 
-              <div className="text-center space-y-2">
-                <h2 className="text-2xl font-bold text-foreground">{musica}</h2>
-                {artista && <p className="text-lg text-muted-foreground">{artista}</p>}
-              </div>
-
+              {/* BOTÃO PLAY/PAUSE */}
               <div className="flex items-center justify-center gap-8">
                 <button
                   onClick={togglePlay}
                   className="w-16 h-16 rounded-full bg-primary hover:bg-primary-light text-primary-foreground flex items-center justify-center transition-all hover:scale-110 shadow-glow"
                 >
-                  {isPlaying ? <Pause size={32} /> : <Play size={32} className="ml-1" />}
+                  {isPlaying ? (
+                    <Pause size={32} />
+                  ) : (
+                    <Play size={32} className="ml-1" />
+                  )}
                 </button>
               </div>
 
+              {/* VOLUME */}
               <div className="flex items-center gap-4 max-w-xs mx-auto">
                 <Volume2 className="text-muted-foreground" size={20} />
                 <Slider
