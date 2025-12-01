@@ -19,7 +19,7 @@ import vogel from "@/assets/locutores/vogel.png";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ backgroundColor: '#1A171E' }}>
       <Header />
 
       {/* Hero Section */}
