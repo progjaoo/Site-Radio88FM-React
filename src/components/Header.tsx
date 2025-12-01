@@ -20,7 +20,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-all">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/120 backdrop-blur-lg border-b border-border transition-all">
       <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* LOGO */}
@@ -42,7 +42,7 @@ const Header = () => {
           </Link>
 
           {/* NAVIGATION */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             <Link
               to="/"
               className={`text-lg font-semibold transition-colors ${
@@ -67,7 +67,8 @@ const Header = () => {
 
           {/* SOCIAL ICONS & THEME TOGGLE */}
           <div className="flex items-center gap-4">
-            <DropdownMenu>
+            
+              <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-foreground hover:text-primary">
                   <Sun size={20} className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -90,7 +91,6 @@ const Header = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
             <a
               href="https://www.youtube.com/@radio88oficial"
               target="_blank"
