@@ -48,6 +48,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "hero-bg": "hsl(var(--hero-bg))",
         team: {
           yellow: "hsl(var(--color-yellow))",
           blue: "hsl(var(--color-blue))",
