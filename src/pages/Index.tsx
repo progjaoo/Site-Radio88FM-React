@@ -23,8 +23,8 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/50" />
+      <section className="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden" style={{ backgroundColor: '#1A171E' }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/30" />
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
