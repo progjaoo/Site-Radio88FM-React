@@ -23,7 +23,7 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden" style={{ backgroundColor: '#1A171E' }}>
+      <section className="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden bg-hero-bg dark:bg-[#1A171E]">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/30" />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -68,7 +68,7 @@ const Index = () => {
       </section>
 
       <section className="py-20 animate-fade-in flex justify-center">
-        <div className="bg-primary text-primary-foreground rounded-3xl shadow-xl px-10 py-16 max-w-4xl w-full mx-6 text-center">
+        <div className="bg-hero-bg dark:bg-primary text-foreground dark:text-primary-foreground rounded-3xl shadow-xl px-10 py-16 max-w-4xl w-full mx-6 text-center">
           <h2 className="text-5xl md:text-6xl font-bold">
             Anuncie aqui!
           </h2>
