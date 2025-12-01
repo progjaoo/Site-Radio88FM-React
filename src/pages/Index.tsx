@@ -67,8 +67,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 animate-fade-in flex justify-center">
-        <div className="bg-hero-bg dark:bg-primary text-foreground dark:text-primary-foreground rounded-3xl shadow-xl px-10 py-16 max-w-4xl w-full mx-6 text-center">
+      <section className="py-20 animate-fade-in flex justify-center bg-hero-bg dark:bg-background">
+        <div className="bg-primary text-primary-foreground rounded-3xl shadow-xl px-10 py-16 max-w-4xl w-full mx-6 text-center">
           <h2 className="text-5xl md:text-6xl font-bold">
             Anuncie aqui!
           </h2>
