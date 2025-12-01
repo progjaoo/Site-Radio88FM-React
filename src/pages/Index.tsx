@@ -68,12 +68,17 @@ const Index = () => {
       </section>
 
       <section className="py-20 animate-fade-in flex justify-center bg-hero-bg dark:bg-background">
-        <div className="bg-primary text-primary-foreground rounded-3xl shadow-xl px-10 py-16 max-w-4xl w-full mx-6 text-center">
-          <h2 className="text-5xl md:text-6xl font-bold">
+        <button 
+          className="bg-primary text-primary-foreground rounded-3xl shadow-xl px-16 py-24 max-w-5xl w-full mx-6 text-center transition-all hover:scale-105 hover:shadow-2xl cursor-pointer"
+          onClick={() => {
+            // Link será adicionado aqui futuramente
+            console.log('Anuncie aqui clicado');
+          }}
+        >
+          <h2 className="text-6xl md:text-7xl font-bold">
             Anuncie aqui!
           </h2>
-          
-        </div>
+        </button>
       </section>
 
 
@@ -164,6 +169,67 @@ const Index = () => {
   </div>
 </section>
 
+{/* Devices & Download Section */}
+<section className="py-20 bg-gradient-to-b from-background to-card animate-fade-in">
+  <div className="container mx-auto px-6">
+    <div className="flex flex-col items-center justify-center space-y-12">
+      {/* Placeholder SVG para dispositivos - substituir depois */}
+      <div className="w-full max-w-4xl flex justify-center">
+        <svg 
+          width="800" 
+          height="400" 
+          viewBox="0 0 800 400" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-auto"
+        >
+          {/* Laptop */}
+          <rect x="50" y="50" width="300" height="200" rx="10" fill="hsl(var(--primary))" fillOpacity="0.2" stroke="hsl(var(--primary))" strokeWidth="2"/>
+          <rect x="60" y="60" width="280" height="160" rx="5" fill="hsl(var(--background))"/>
+          <rect x="150" y="250" width="120" height="10" rx="5" fill="hsl(var(--primary))" fillOpacity="0.3"/>
+          
+          {/* Smartphone */}
+          <rect x="400" y="80" width="120" height="240" rx="15" fill="hsl(var(--primary))" fillOpacity="0.2" stroke="hsl(var(--primary))" strokeWidth="2"/>
+          <rect x="410" y="100" width="100" height="200" rx="5" fill="hsl(var(--background))"/>
+          <circle cx="460" cy="310" r="8" fill="hsl(var(--primary))" fillOpacity="0.3"/>
+          
+          {/* Tablet */}
+          <rect x="550" y="100" width="200" height="250" rx="12" fill="hsl(var(--primary))" fillOpacity="0.2" stroke="hsl(var(--primary))" strokeWidth="2"/>
+          <rect x="560" y="115" width="180" height="220" rx="5" fill="hsl(var(--background))"/>
+          
+          {/* Logo 88 no centro */}
+          <text x="400" y="210" fontSize="80" fontWeight="bold" fill="hsl(var(--primary))" textAnchor="middle">88</text>
+        </svg>
+      </div>
+
+      {/* Download Buttons */}
+      <div className="flex flex-wrap gap-6 justify-center">
+        <a 
+          href="#" 
+          className="transition-transform hover:scale-105"
+          aria-label="Download na App Store"
+        >
+          <img 
+            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+            alt="Download on the App Store" 
+            className="h-14"
+          />
+        </a>
+        <a 
+          href="#" 
+          className="transition-transform hover:scale-105"
+          aria-label="Baixar no Google Play"
+        >
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+            alt="Get it on Google Play" 
+            className="h-14"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       <Footer />
     </div>
