@@ -15,7 +15,7 @@ import {
 const Header = () => {
   const location = useLocation();
   const [isHovered, setIsHovered] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -31,7 +31,11 @@ const Header = () => {
             onMouseLeave={() => setIsHovered(false)}
           >
             <img
-              src={isHovered ? logoHeaderColor : logoHeaderWhite}
+              src={
+                resolvedTheme === 'dark' 
+                  ? (isHovered ? logoHeaderColor : logoHeaderWhite)
+                  : logoHeaderColor
+              }
               alt="Logo Rádio 88 FM"
               className="w-14 h-auto transition-transform duration-500 ease-out hover:scale-110"
             />
