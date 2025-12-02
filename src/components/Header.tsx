@@ -62,20 +62,17 @@ const Header = () => {
             <Button 
               variant="ghost" 
               size="icon" 
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-all duration-300"
               onClick={() => {
-                if (theme === "light") {
-                  setTheme("dark");
-                } else if (theme === "dark") {
-                  setTheme("system");
-                } else {
-                  setTheme("light");
-                }
-              }}
-            >
-              {theme === "light" && <Sun size={20} />}
-              {theme === "dark" && <Moon size={20} />}
-              {/* {theme === "system" && <Monitor size={20} />} */}
+                setTheme(resolvedTheme === "light" ? "dark" : "light");
+              }}>
+              <div className="transition-transform duration-300 ease-in-out hover:rotate-12">
+                {resolvedTheme === "light" ? (
+                  <Moon size={20} className="transition-opacity duration-300" />
+                ) : (
+                  <Sun size={20} className="transition-opacity duration-300" />
+                )}
+              </div>  
               <span className="sr-only">Alternar tema</span>
             </Button>
             <a
