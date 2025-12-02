@@ -59,6 +59,14 @@ const Header = () => {
             >
               Ouvir Ao Vivo
             </Link>
+            <Link
+              to="/assistir"
+              className={`text-lg font-semibold transition-colors ${
+                isActive("/assistir") ? "text-primary" : "text-foreground hover:text-primary"
+              }`}
+            >
+              Assistir Ao Vivo
+            </Link>
           </nav>
 
           {/* AÇÕES */}
