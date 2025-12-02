@@ -75,7 +75,7 @@ const Header = () => {
             >
               {theme === "light" && <Sun size={20} />}
               {theme === "dark" && <Moon size={20} />}
-              {theme === "system" && <Monitor size={20} />}
+              {/* {theme === "system" && <Monitor size={20} />} */}
               <span className="sr-only">Alternar tema</span>
             </Button>
             <a
