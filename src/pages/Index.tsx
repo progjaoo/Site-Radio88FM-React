@@ -23,17 +23,23 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden bg-hero-bg dark:bg-[#1A171E]">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/30" />
+      <section className="min-h-screen flex items-center pt-24 pb-12 relative overflow-hidden" style={{ backgroundColor: '#1A171E' }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-card/10" />
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className=" space-y-8 animate-fade-in">
               <div className="text-left">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
+              <h1 
+                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                style={{ color: '#FFFFFF' }}
+              >
                 A vitória é do<br />povo de Deus
               </h1>
-              <p className="mt-7 text-xl md:text-2xl text-muted-foreground">
+              <p 
+                className="mt-7 text-xl md:text-2xl"
+                style={{ color: '#FFFFFF' }}
+              >
                 A rádio que você sempre ouviu,<br />agora também pode assistir.
               </p>
             </div>

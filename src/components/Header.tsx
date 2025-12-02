@@ -22,8 +22,19 @@ const Header = () => {
     }
   };
 
+  const getHeaderBackground = () => {
+    if (resolvedTheme === "dark") {
+      return "rgba(22, 15, 26, 0.90)"; 
+    } else {
+      return "rgba(240, 240, 245, 0.60)"; 
+    }
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/120 backdrop-blur-lg border-b border-border transition-all">
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 bg-background/120 backdrop-blur-lg border-b border-border transition-all"
+      style={{ backgroundColor: getHeaderBackground() }}
+    >
       <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           
