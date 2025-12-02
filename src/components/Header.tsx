@@ -5,12 +5,6 @@ import logoHeaderColor from "@/assets/logoheadsvgcolor.svg";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const location = useLocation();
@@ -67,30 +61,25 @@ const Header = () => {
 
           {/* SOCIAL ICONS & THEME TOGGLE */}
           <div className="flex items-center gap-4">
-            
-              <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-foreground hover:text-primary">
-                  <Sun size={20} className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon size={20} className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                  <span className="sr-only">Alternar tema</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setTheme("light")}>
-                  <Sun size={16} className="mr-2" />
-                  Light
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("dark")}>
-                  <Moon size={16} className="mr-2" />
-                  Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme("system")}>
-                  <Monitor size={16} className="mr-2" />
-                  Auto
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-foreground hover:text-primary transition-colors"
+              onClick={() => {
+                if (theme === "light") {
+                  setTheme("dark");
+                } else if (theme === "dark") {
+                  setTheme("system");
+                } else {
+                  setTheme("light");
+                }
+              }}
+            >
+              {theme === "light" && <Sun size={20} />}
+              {theme === "dark" && <Moon size={20} />}
+              {theme === "system" && <Monitor size={20} />}
+              <span className="sr-only">Alternar tema</span>
+            </Button>
             <a
               href="https://www.youtube.com/@radio88oficial"
               target="_blank"
