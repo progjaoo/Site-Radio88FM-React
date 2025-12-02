@@ -23,7 +23,6 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/120 backdrop-blur-lg border-b border-border transition-all">
       <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
-          {/* LOGO */}
           <Link
             to="/"
             className="flex items-center gap-2"
@@ -65,7 +64,6 @@ const Header = () => {
             </Link>
           </nav>
 
-          {/* SOCIAL ICONS & THEME TOGGLE */}
           <div className="flex items-center gap-4">
             
               <DropdownMenu>
